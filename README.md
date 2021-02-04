@@ -1,6 +1,7 @@
-# Morning-Text-Bot
+# morning-text-bot
 
-Morning-Text-Bot is a simple telegram bot that sends a collection of telegram messages to start the day. Details follow Installation and Configuration.
+morning-text-bot is a simple telegram bot that sends a collection of telegram messages to start the day. Details
+ follow Installation and Configuration.
 
 ## Installation
 
