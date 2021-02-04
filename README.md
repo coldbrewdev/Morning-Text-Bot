@@ -10,6 +10,7 @@ Use git to clone.
 ```bash
 git clone https://github.com/coldbrewdev/morning-text-bot
 ```
+Then setup your config.py file, as explained below.
 
 ## Configuration
 
