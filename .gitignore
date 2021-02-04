@@ -3,3 +3,4 @@ sandbox.py
 config.py
 # Project exclude paths
 /venv/
+/.idea/
