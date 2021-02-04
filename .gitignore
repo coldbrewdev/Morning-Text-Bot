@@ -1,0 +1,5 @@
+# Project exclude paths
+sandbox.py
+config.py
+# Project exclude paths
+/venv/
