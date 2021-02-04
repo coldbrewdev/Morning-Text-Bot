@@ -17,7 +17,10 @@ The code is currently configured such that in addition to the repo you will need
 **Important:** To facilitate development, the bot is configured to only call the telegram API if the server timezone is UTC. If your machine timezone is UTC, the telegram API will always be called. If your server timezone is not UTC, the bot will simply print the output instead of calling the telegram API. This can easily be modified.
 ### Telegram Bot
 
-Creating a telegram bot is a [straightforward process](https://core.telegram.org/bots). This bot currently uses the http protocol for the bot directly, i.e. you don't need supplemental modules. Just get your bot's ID and the chat ID of the person you want to message.
+Creating a telegram bot is a [straightforward process](https://core.telegram.org/bots). This bot currently uses the
+ http protocol for the telegram API directly, i.e. you don't need supplemental modules. Just get your bot's ID and the
+  chat ID
+  of the person you want to message.
 
 ### Hosting
 
