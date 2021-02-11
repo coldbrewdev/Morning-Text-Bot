@@ -12,15 +12,15 @@ headers = {
 }
 
 
-def send_tel_update(message):
-    parsetext = urllib.parse.quote_plus(message)
-    print(message + '\n')
-    if dt.datetime.now(dt.timezone(dt.timedelta(0))).astimezone().tzname() == 'UTC':  # Check whether we're on server
-        requests.get(config.telegram_message_URL.format(parsetext))
+def send_message(bot, chat, message):
+    parse = urllib.parse.quote_plus(message)
+    response = requests.get("https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}".format(bot, chat, parse))
+    return response
 
 
-def send_tel_photo(url):
-    requests.get(config.telegram_photo_URL.format(url))
+def send_photo(bot, chat, url):
+    response = requests.get("https://api.telegram.org/bot{}/sendPhoto?chat_id={}&photo={}".format(bot, chat, url))
+    return response
 
 
 def get_age(bday):
@@ -133,29 +133,31 @@ def get_covid_data():
 
 
 if __name__=='__main__':
+    bot_key = config.bot_key
+    chat_id = config.chat_id
     try:
         message0 = 'Good morning! Today is ' + dt.datetime.utcnow().strftime("%A %B %d, %Y") + \
                    ". You are " + str(get_age(config.a_bday)) + ' days old. ' + config.b + ' is ' \
                    + str(get_age(config.b_bday)) + ' days old.'
-        send_tel_update(message0)
+        send_message(bot_key, chat_id, message0)
         time.sleep(2)
     except:
-        send_tel_update('Error sending dates/ages.')
+        send_message(bot_key, chat_id, 'Error sending dates/ages.')
     try:
         message1 = get_weather()
-        send_tel_update(message1)
+        send_message(bot_key, chat_id, message1)
         time.sleep(2)
     except:
-        send_tel_update('Error sending weather.')
+        send_message(bot_key, chat_id, 'Error sending weather.')
     try:
         message2 = get_headlines()
-        send_tel_update(message2)
+        send_message(bot_key, chat_id, message2)
         time.sleep(2)
     except:
-        send_tel_update('Error sending headlines.')
+        send_message(bot_key, chat_id, 'Error sending headlines.')
     try:
         message3 = get_covid_data() + '\n\n' + get_vax_data()
-        send_tel_update(message3)
+        send_message(bot_key, chat_id, message3)
         time.sleep(2)
     except:
-        send_tel_update('Error sending COVID data.')
+        send_message(bot_key, chat_id, 'Error sending COVID data.')
